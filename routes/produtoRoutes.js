@@ -31,7 +31,7 @@ router.post('/', async (req, res) => {
     };
 
     try{
-        const newProduct = await Produto.create(produto);
+        await Produto.create(produto);
 
         res.status(201).json({
             message: 'Produto cadastrado com sucesso!'
@@ -60,7 +60,6 @@ router.get('/', async (req, res) => {
         res.status(500).json({
             error: error
         });
-
     }
 });
 

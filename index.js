@@ -4,7 +4,9 @@ const server = express();
 const dotenv = require('dotenv');
 dotenv.config();
 
-const produtoRoutes = require('./routes/produtoRoutes')
+const produtoRoutesPost = require('./routes/produtoRoutesPost');
+const produtoRoutesGet = require('./routes/produtoRoutesGet');
+const produtoRoutesGetID = require('./routes/produtoRoutesGetID');
 
 server.use(
     express.urlencoded({
@@ -14,7 +16,9 @@ server.use(
 
 server.use(express.json());
 
-server.use('/produto', produtoRoutes)
+server.use('/produto', produtoRoutesPost);
+server.use('/produto', produtoRoutesGet);
+server.use('/produto', produtoRoutesGetID);
 
 const db_user = process.env.DB_USER;
 const db_password = encodeURIComponent(process.env.DB_PASSWORD);
